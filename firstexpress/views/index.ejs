@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+	<link rel='stylesheet' href='/stylesheets/Columbia.css' />
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    
+<input type="text" id="myInput" placeholder="搜索...">
+<button id = "myinbtn" onclick="myFunction()">搜索</button>
+
+    <table class="table table-bordered text-center" id="myTable">
+	<tr>
+	    <td>name</td>
+	    <td>number</td>
+	</tr>
+	<% for(var i=0;i<data.length;i++){ %>
+	<tr>
+	    <td><%= data[i].name %></td>
+	    <td><%= data[i].number %></td>
+	</tr>
+	<% } %>
+    </table>
+	
+<script src="/javascripts/columbia.js"></script>
+  </body>
+</html>
