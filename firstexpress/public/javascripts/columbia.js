@@ -1,8 +1,10 @@
 function myFunction() {
   // 声明变量
-  var input, filter, table, tr, td, i;
+  var input,input2, filter, filter2,table, tr, td, i;
   input = document.getElementById("myInput");
+  input2 = document.getElementById("myInput2");
   filter = input.value.toUpperCase();
+  filter2 = input2.value.toUpperCase();
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
 
@@ -10,7 +12,7 @@ function myFunction() {
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[0];
     if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      if ((td.innerHTML.toUpperCase().indexOf(filter) > -1)||(td.innerHTML.toUpperCase().indexOf(filter2) > -1)) {
         tr[i].style.display = "";
       } else {
         tr[i].style.display = "none";
