@@ -1,6 +1,27 @@
-function myFunction() {
-  //alert("ssss")
+function search() {
+  alert("ssss")
     // 声明变量
+    $(function () {
+      $.ajax({
+        url: '/queryAll',
+        success: function (res) {
+          console.log(res)
+          let places = res;
+          let html = ``
+          for (let item of places) {
+            console.log(item)
+            html += `<tr>
+            <td>${item.name}</td>
+            <td>${item.number}</td>
+            </tr>
+            `
+          }
+          $('#teble tbody').html(html)
+        }
+      })
+    })
+
+/*
     let input,input2, filter, filter2,table, tr, td, i;
     input = document.getElementById("myInput");
     input2 = document.getElementById("myInput2");
@@ -27,6 +48,7 @@ function myFunction() {
         }
       } 
     }
+    */
   }
   
   function del(obj){
