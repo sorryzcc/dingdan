@@ -21,6 +21,7 @@
             html += `<tr>
             <td>${item.name}</td>
             <td>${item.number}</td>
+            <td><button onclick="del(this)">delete</button></td>
             </tr>
             `
           }
@@ -60,7 +61,23 @@
   }
   
   function del(obj){
-      obj.parentNode.parentNode.remove();
+    name=obj.parentNode.parentNode.childNodes[1].innerHTML
+    number = obj.parentNode.parentNode.childNodes[3].innerHTML
+      console.log(name)
+      console.log(number)
+
+      $(function () {
+      $.ajax({
+        url: 'http://127.0.0.1/delete/'+number,
+        success: function (res) {
+          console.log(res)
+          lbl = document.getElementById("myLabel")
+          lbl.innerHTML="delete "+ number + " success"
+          search()
+        }
+      })
+    })
+
   }
 
   function add(){
@@ -80,11 +97,13 @@
 name: <input type="text" id="myInput" placeholder="please input name" ><br>
 transaction number:<input type="text" id="myInput2" placeholder="please input number" ><br>
 <button id = "myinbtn" onclick="search()">search</button>
+<label id="myLabel"></label>
 <table id="teble" border="1" cellspacing="0" class="table">
   <thead>
     <tr>
       <th>name</th>
       <th>number</th>
+      <th>operation</th>
     </tr>
   </thead>
   <tbody></tbody>

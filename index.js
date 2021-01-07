@@ -54,6 +54,19 @@ app.get("/queryAll",(req,res)=>{
 	})
 })
 
+app.get('/delete/:id', (req, res) => {
+	sp_number = req.params.id
+	console.log(sp_number)
+	var user_sql = 'delete FROM dingdan where number='+sp_number;
+	connection.query(user_sql,function(err,result){
+		if(err){
+		console.log('[delete]-:'+err);
+		}else{
+			res.send(result)
+		}
+	})
+});
+
 app.get("/main.html",(req,res)=>{
 
 	  // 使用 path.join 拼接路径
