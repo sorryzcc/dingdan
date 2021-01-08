@@ -67,6 +67,36 @@ app.get('/delete/:id', (req, res) => {
 	})
 });
 
+app.get('/add/:p1/:p2', (req, res) => {
+	sp_name = req.params.p1
+	sp_number = req.params.p2
+
+	var user_sql = 'insert into dingdan values ('+sp_name+','+sp_number+')';
+	console.log(user_sql)
+	connection.query(user_sql,function(err,result){
+		if(err){
+		console.log('[insert]-:'+err);
+		}else{
+			res.send(result)
+		}
+	})
+});
+
+app.get('/update/:p1/:p2', (req, res) => {
+	sp_name = req.params.p1
+	sp_number = req.params.p2
+
+	var user_sql = 'update dingdan set number = \''+sp_number+'\' where name=\''+sp_name+"'";
+	console.log(user_sql)
+	connection.query(user_sql,function(err,result){
+		if(err){
+		console.log('[update]-:'+err);
+		}else{
+			res.send(result)
+		}
+	})
+});
+
 app.get("/main.html",(req,res)=>{
 
 	  // 使用 path.join 拼接路径
