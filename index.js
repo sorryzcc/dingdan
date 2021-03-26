@@ -7,27 +7,6 @@ const app = express();
 
 app.use(express.json());
 
-const books = [
-    { id: 1, name: 'book1'},
-    { id: 2, name: 'book2'},
-    { id: 3, name: 'book3'},
-];
-
-app.get('/', (req, res) => {
-    res.end('Hello World!');
-});
-//获取所有书籍
-app.get('/api/books', (req, res) => {
-    res.json(books).end();
-});
-//获取特定id的书籍
-app.get('/api/books/:id', (req, res) => {
-    let book = books.find(b => b.id === parseInt(req.params.id));
-    if(!book) return res.status(404).json({msg: 'The book with the given ID not find.'});
-    res.json(book).end();
-});
-
-
 //调用mysql模块
 const mysql = require('mysql'); 
  
@@ -36,15 +15,15 @@ let connection = mysql.createConnection({
 	host:'localhost',   //主机地址
 	port:3306,	    //端口
 	user:'root',       //账号
-	password:'zhangcongcong123',   //密码
-	database:'runoob'   //连接的数据库
+	password:'456789',   //密码
+	database:'world'   //连接的数据库
 });
 //连接到数据库
 connection.connect();
 
 
 app.get("/queryAll",(req,res)=>{
-	var user_sql = 'SELECT * FROM dingdan';
+	var user_sql = 'SELECT * FROM city';
 	connection.query(user_sql,function(err,result){
 		if(err){
 		console.log('[query]-:'+err);
@@ -116,5 +95,5 @@ app.get("/main.html",(req,res)=>{
 
 
 const port = process.env.PORT || 80;
-app.listen(port, () => console.log(`Listening on port ${port}`));
+app.listen(port, () => console.log(`http://127.0.0.1/queryAll`));
 
