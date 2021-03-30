@@ -18,8 +18,8 @@
           let html = ``
           for (let item of places) {
             console.log(item)
-            html += `<tr onclick="copyto(${item.name},${item.number})">
-            <td>${item.name}</td>
+            html += `<tr onclick="copyto(${item.Name},${item.number})">
+            <td>${item.Name}</td>
             <td>${item.number}</td>
             <td><button onclick="del(this)">delete</button></td>
             </tr>
@@ -31,34 +31,6 @@
     })
   }
 
-/*
-    let input,input2, filter, filter2,table, tr, td, i;
-    input = document.getElementById("myInput");
-    input2 = document.getElementById("myInput2");
-    filter = input.value.toUpperCase();
-    filter2 = input2.value.toUpperCase();
-    console.log(filter)
-    console.log(filter2)
-    table = document.getElementById("myTable");
-    tr = table.getElementsByTagName("tr");
-  
-    // 循环表格每一行，查找匹配项
-    for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    td2 = tr[i].getElementsByTagName("td")[1];
-      if (td) {
-      let tmpstr=td.innerHTML.toUpperCase();
-      let tmpstr2=td2.innerHTML.toUpperCase();
-      console.log(tmpstr)
-      console.log(tmpstr2)
-        if ((tmpstr.indexOf(filter) > -1)||(tmpstr2.indexOf(filter2) > -1)) {
-          tr[i].hidden = false;
-        } else {
-          tr[i].hidden = true;
-        }
-      } 
-    }
-    */
 
   function copyto(p1,p2){
     let e1 = document.getElementById('add01')
