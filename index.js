@@ -15,15 +15,15 @@ let connection = mysql.createConnection({
 	host:'localhost',   //主机地址
 	port:3306,	    //端口
 	user:'root',       //账号
-	password:'456789',   //密码
-	database:'world'   //连接的数据库
+	password:'123456',   //密码
+	database:'test'   //连接的数据库
 });
 //连接到数据库
 connection.connect();
 
 
 app.get("/queryAll",(req,res)=>{
-	var user_sql = 'SELECT * FROM city';
+	var user_sql = 'SELECT * FROM websites';
 	connection.query(user_sql,function(err,result){
 		if(err){
 		console.log('[query]-:'+err);
