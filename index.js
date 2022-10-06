@@ -16,14 +16,14 @@ let connection = mysql.createConnection({
 	port:3306,	    //端口
 	user:'root',       //账号
 	password:'123456',   //密码
-	database:'test'   //连接的数据库
+	database:'sys'   //连接的数据库
 });
 //连接到数据库
 connection.connect();
 
 
 app.get("/queryAll",(req,res)=>{
-	var user_sql = 'SELECT * FROM websites';
+	var user_sql = 'SELECT * FROM sys_config';
 	connection.query(user_sql,function(err,result){
 		if(err){
 		console.log('[query]-:'+err);
