@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 
 //调用mysql模块
-const mysql = require('mysql'); 
+const mysql = require('mysql2'); 
  
 //下面的配置必须要与自己本机上的mysql信息一致
 let connection = mysql.createConnection({
@@ -16,14 +16,14 @@ let connection = mysql.createConnection({
 	port:3306,	    //端口
 	user:'root',       //账号
 	password:'123456',   //密码
-	database:'sys'   //连接的数据库
+	database:'runoob'   //连接的数据库
 });
 //连接到数据库
 connection.connect();
 
 
 app.get("/queryAll",(req,res)=>{
-	var user_sql = 'SELECT * FROM sys_config';
+	var user_sql = 'SELECT * FROM users';
 	connection.query(user_sql,function(err,result){
 		if(err){
 		console.log('[query]-:'+err);
